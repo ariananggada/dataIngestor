@@ -1,28 +1,28 @@
 const { PubSub } = require('@google-cloud/pubsub')
 
-const pubSubClient = new PubSub( {
+const pubSubClient = new PubSub({
   projectId: 'iot-lowtouch-jumpstart-f03i',
   keyFileName: './key.json',
-} )
+})
 
-const batVolt = 4.101
-const batteryLevel = (batVolt / 4.1) * 100
+// const batVolt = 4.101
+// const batteryLevel = (batVolt / 4.1) * 100
+// const dateTime = Date.now()
+// const macId = 'C4BE847489B90000'
 
 const payload = {
-  type : 'inboundDataEventMsg',
+  type: 'inboundDataEventMsg',
   networkId: 'tilt-network',
-  deviceId: '1VqG8RcpEvKbxJJ5Z8c6TU',
-  aliasKey: 'macId',
-  time: 1657018543,
-  historical: true,
-
+  deviceId: '5678',
+  aliasKey: 'serialNumber',
   data: [
-    {path: 'tiltAngle/xAxis', value: '0.125'},
-    {path: 'tiltAngle/yAxis', value: '-0.099'},
-    {path: 'status/netLQI', value: '-0.099'},
-    {path: 'status/batVolt', value: batVolt},
-    {path: 'status/batteryLevel', value: batteryLevel},
+    { path: 'tiltAngle/xAxis', value: 0 },
+    { path: 'tiltAngle/yAxis', value: 0 },
+    { path: 'status/netLQI', value: 0 },
+    { path: 'status/batVolt', value: 0 },
+    { path: 'status/batteryLevel', value: 0 },
+    { path: 'macId', value: '1234' }
   ]
 }
 
-pubSubClient.topic( 'default-processor' ).publishMessage( { data: Buffer.from(JSON.stringify(payload) ) } )
+pubSubClient.topic('default-processor').publishMessage({ data: Buffer.from(JSON.stringify(payload)) })
