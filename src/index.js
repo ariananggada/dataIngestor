@@ -375,7 +375,7 @@ client.on('message', function (topic, message, packet) {
         {path: 'status/netLQI', value: resultData.netLQI},
         {path: 'tiltAngle/xAxis', value: resultData.XAxisDat},
         {path: 'tiltAngle/yAxis', value: resultData.YAxisDat},
-        {path: 'macId', value: deviceMacId}
+        {path: 'macId', value: deviceMacId},
         {path: 'dateTime', value: resultData.timeStamp},
       ]
     }
