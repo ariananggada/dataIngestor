@@ -11,6 +11,7 @@ const pubSubClient = new PubSub( {
 const mqtt = require("mqtt");
 const client = mqtt.connect("mqtt://34.101.133.187:1883");
 
+const deviceMacId = 'C4BE847489B90000'
 client.subscribe("C4BE847489B90000/#");
 
 console.log("start subscribing....");
@@ -361,7 +362,7 @@ client.on('message', function (topic, message, packet) {
     const pubSubPayload = {
       type : 'inboundDataEventMsg',
       networkId: 'tilt-network',
-      deviceId: '1VqG8RcpEvKbxJJ5Z8c6TU',
+      deviceId: deviceMacId,
       aliasKey: 'macId',
       time: Date.now(),
       historical: true,
@@ -372,6 +373,7 @@ client.on('message', function (topic, message, packet) {
         {path: 'status/netLQI', value: resultData.netLQI},
         {path: 'tiltAngle/xAxis', value: resultData.XAxisDat},
         {path: 'tiltAngle/yAxis', value: resultData.YAxisDat},
+        {path: 'macId', value: 'testdummy'}
       ]
     }
     
