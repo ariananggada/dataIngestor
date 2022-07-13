@@ -352,11 +352,13 @@ client.on('message', function (topic, message, packet) {
   }
   else {
     const resultData = {
-      batLevel: batLevelArray[0],
+      batVolt: batLevelArray[0],
+      batteryLevel: (batLevelArray[0] / 4.1) * 100,
       dateTime: dateTimeArray[0],
       netLQI: netLqiArray[0],
       XAxisDat: xAxisDataArray[0],
       YAxisDat: yAxisDataArray[0],
+      timeStamp: Date.now()
     };
 
     const pubSubPayload = {
@@ -364,16 +366,17 @@ client.on('message', function (topic, message, packet) {
       networkId: 'tilt-network',
       deviceId: deviceMacId,
       aliasKey: 'macId',
-      time: Date.now(),
+      time: resultData.timeStamp,
       historical: true,
     
       data: [
-        {path: 'status/batVolt', value: resultData.batLevel},
-        {path: 'status/batteryLevel', value: resultData.batLevel},
+        {path: 'status/batVolt', value: resultData.batVolt},
+        {path: 'status/batteryLevel', value: resultData.batteryLevel},
         {path: 'status/netLQI', value: resultData.netLQI},
         {path: 'tiltAngle/xAxis', value: resultData.XAxisDat},
         {path: 'tiltAngle/yAxis', value: resultData.YAxisDat},
-        {path: 'macId', value: 'testdummy'}
+        {path: 'macId', value: deviceMacId}
+        {path: 'dateTime', value: resultData.timeStamp},
       ]
     }
     
