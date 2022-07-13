@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
-CONTAINERNAME="iotDataIngestor"
-IMAGENAME="iotDataIngestor"
+CONTAINERNAME="iotdataingestor-devo"
+IMAGENAME="iotdataingestor-devo"
 
 if docker ps -a | grep -q -i $CONTAINERNAME
 then

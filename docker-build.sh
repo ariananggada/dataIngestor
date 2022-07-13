@@ -1,3 +1,3 @@
 #!/usr/bin/env sh
-IMAGENAME="iotDataIngestor"
+IMAGENAME="iotdataingestor-devo"
 docker build --rm -t $IMAGENAME:latest . --no-cache
