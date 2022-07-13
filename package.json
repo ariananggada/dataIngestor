@@ -2,10 +2,11 @@
   "name": "dataingestor",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/subscribe.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "dev": "nodemon src/subscribe.js",
+    "start": "node src/index.js"
   },
   "keywords": [],
   "author": "",

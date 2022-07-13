@@ -1,8 +1,8 @@
 const { PubSub } = require('@google-cloud/pubsub')
 
 const pubSubClient = new PubSub({
-  projectId: 'iot-lowtouch-jumpstart-f03i',
-  keyFileName: './key.json',
+  projectId: '',
+  keyFileName: './application_default_credentials.json',
 })
 
 // const batVolt = 4.101
@@ -13,15 +13,15 @@ const pubSubClient = new PubSub({
 const payload = {
   type: 'inboundDataEventMsg',
   networkId: 'tilt-network',
-  deviceId: '5678',
-  aliasKey: 'serialNumber',
+  deviceId: 'C4BE847489B90000',
+  aliasKey: 'macId',
   data: [
     { path: 'tiltAngle/xAxis', value: 0 },
     { path: 'tiltAngle/yAxis', value: 0 },
-    { path: 'status/netLQI', value: 0 },
-    { path: 'status/batVolt', value: 0 },
-    { path: 'status/batteryLevel', value: 0 },
-    { path: 'macId', value: '1234' }
+    { path: 'status/netLQI', value: 218 },
+    { path: 'status/batVolt', value: 3 },
+    { path: 'status/batteryLevel', value: 90.30 },
+    { path: 'macId', value: 'test' }
   ]
 }
 
